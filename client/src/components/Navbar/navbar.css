@@ -1,0 +1,17 @@
+.navbar {
+    background-color: var(--color-one);
+    color: #fff;
+}
+
+.color {
+    color: var(--color-two);
+}
+
+li:hover {
+    background-color: var(--color-two);
+    color: #fff;
+}
+
+.active {
+    background-color: var(--color-two);
+}
