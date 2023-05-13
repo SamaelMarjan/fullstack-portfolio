@@ -16,8 +16,9 @@ const Edit = () => {
     })
 
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setInput({...input, [name] : value})
+        const {name, value, type, files} = e.target
+        const inputValue = type === 'file' ? files[0] : value
+        setInput({...input, [name] : inputValue})
     }
 
     useEffect(() => {
@@ -37,9 +38,14 @@ const Edit = () => {
     //update
     const updateProject = async() => {
         try {
-            const {data} = await axios.put(`http://localhost:5000/project/update/${id}`, input)
-            console.log(data);
+            const {data} = await axios.put(`http://localhost:5000/project/update/${id}`, input, {
+                headers: {
+                    "Content-Type" : "multipart/form-data"
+                }
+            })
+            console.log(data.project);
             toast.success(data.message)
+            setInput(data.project)
             navigate('/dashbord')
         } catch (error) {
             console.log(error);
@@ -59,8 +65,8 @@ const Edit = () => {
                 </div>
                 <div className='edit-section-input'>
                     <input className='contact-class p-2' placeholder='Name' type='text' name='name' value={input.name} onChange={handleChange} />
-                    <input className='contact-class p-2' placeholder='Image' type='text' name='image' value={input.image} onChange={handleChange} />
-                    <input className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange}  />
+                    <input className='contact-class p-2' placeholder='Image' type='file' name='image' accept='images/' onChange={handleChange} />
+                    <textarea className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange}  />
                     <input className='contact-class p-2' placeholder='Github' type='text' name='github' value={input.github} onChange={handleChange}  />
                     <input className='contact-class p-2' placeholder='Live' type='text' name='live' value={input.live} onChange={handleChange}  />
                     <button className='btn border-color text-light' onClick={updateProject}>Submit</button>

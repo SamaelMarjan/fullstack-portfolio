@@ -59,7 +59,16 @@ module.exports.getSingle = async(req, res) => {
 module.exports.updateProject = async(req, res) => {
     try {
         const {id} = req.params
-        await projectModel.findByIdAndUpdate(id, {...req.body})
+        const {filename} = req.file
+        const {name, description, github, live} = req.body
+        //validations
+        // if(!name || !description || !github || !live || !filename) {
+        //     return res.json({
+        //         message: "Fill all the data"
+        //     })
+        // }
+
+        await projectModel.findByIdAndUpdate(id, {name, description, github, live, image: filename })
         res.status(200).json({
             success: true, message: 'Updated successfully'
         })

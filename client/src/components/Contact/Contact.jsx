@@ -21,7 +21,7 @@ const Contact = () => {
         e.preventDefault()
         try {
             const {data} = await axios.post('http://localhost:5000/message/sendmessage', input)
-            console.log(data);
+            //console.log(data);
             toast.success(data.message)
             setInput(data.messages)
         } catch (error) {

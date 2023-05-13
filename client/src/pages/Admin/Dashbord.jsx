@@ -66,7 +66,7 @@ const Dashbord = () => {
                                     <div className='project-card-button'>
                                         {/* <Button button='View' className='btn border-color text-light' onClick={() => } /> */}
                                         <button className='btn border-color text-light' onClick={() => {navigate(`/project/${project._id}`)}}>View</button>
-                                        <button className='btn border-color text-light' onClick={() => {navigate(`/edit/${project._id}`)}}>Edit</button>
+                                        <button className='btn border-color text-light' onClick={() => {navigate(`edit/${project._id}`)}}>Edit</button>
                                         <button className='btn border-color text-light' onClick={() => {deleteProject(project._id)}}>Delete</button>
                                     </div>
                                     </div>

@@ -50,7 +50,7 @@ const Create = () => {
                     <form >
                         <input className='contact-class p-2' placeholder='Name' type='text' name='name' value={input.name} onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Image' type='file' name='image' accept='images/' onChange={handleChange} />
-                        <input className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange} />
+                        <textarea className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Github' type='text' name='github' value={input.github} onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Live' type='text' name='live' value={input.live} onChange={handleChange} />
                     </form>

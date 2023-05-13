@@ -40,6 +40,6 @@ router.get('/get/:id', getSingle)
 router.delete('/delete/:id', deleteProject)
 
 //update
-router.put('/update/:id', updateProject)
+router.put('/update/:id', upload.single('image'), updateProject)
 
 module.exports = router
