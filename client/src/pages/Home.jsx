@@ -18,7 +18,11 @@ const Home = () => {
     //get all data
     const getData = async() => {
         try {
-            const {data} = await axios.get('http://localhost:5000/project/get')
+            const {data} = await axios.get('http://localhost:5000/project/get', {
+                headers: {
+                    "Content-Type" : "application/json"
+                }
+            })
             //console.log(data);
             setData(data.projects)
             setLoading(false)
@@ -46,9 +50,9 @@ const Home = () => {
                 {
                     data.slice(0, 4).map((data) => (
                         
-                        <div className='card project-card' key={data.id}>
+                        <div className='card project-card' key={data._id}>
                             <div className='project-card-body'>
-                                <img className='project-image' src={data.image} alt={data.name} />
+                                <img className='project-image' src={`http://localhost:5000/project/${data.image}`} alt={data.name} />
                                 <div>{data.name}</div>
                             </div>
                             <div className='project-card-button'>

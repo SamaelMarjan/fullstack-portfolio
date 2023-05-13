@@ -55,7 +55,7 @@ const Edit = () => {
         <div className='container mt-5 mb-5'>
             <div className='edit-section'>
                 <div className='edit-section-btn'>
-                    <button className='btn submit' onClick={() => {navigate(-1)}}>Back</button>
+                    <button className='btn border-color text-light' onClick={() => {navigate(-1)}}>Back</button>
                 </div>
                 <div className='edit-section-input'>
                     <input className='contact-class p-2' placeholder='Name' type='text' name='name' value={input.name} onChange={handleChange} />
@@ -63,7 +63,7 @@ const Edit = () => {
                     <input className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange}  />
                     <input className='contact-class p-2' placeholder='Github' type='text' name='github' value={input.github} onChange={handleChange}  />
                     <input className='contact-class p-2' placeholder='Live' type='text' name='live' value={input.live} onChange={handleChange}  />
-                    <button className='btn submit' onClick={updateProject}>Submit</button>
+                    <button className='btn border-color text-light' onClick={updateProject}>Submit</button>
                 </div>
             </div>
         </div>

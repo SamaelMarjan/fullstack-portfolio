@@ -15,7 +15,11 @@ const Singlepage = () => {
   useEffect(() => {
     const singleData = async() => {
       try {
-        const {data} = await axios.get(`http://localhost:5000/project/get/${id}`)
+        const {data} = await axios.get(`http://localhost:5000/project/get/${id}`, {
+          headers: {
+            "Content-Type" : "application/json"
+          }
+        })
         console.log(data);
         setValue(data.project)
         setLoading(false)
@@ -36,14 +40,14 @@ const Singlepage = () => {
           <div>
             <Toaster />
             <div className='container mt-5 mb-5'>
-            <div className='btn submit' onClick={() => {navigate(-1)}}>Back</div>
+            <div className='btn border-color text-light' onClick={() => {navigate(-1)}}>Back</div>
               <div className='mb-3'>{value.name}</div>
               <div className='mb-3'>
-                <a className='btn submit' href={value.github} target='_blank' rel="noreferrer">Github</a>
-                <a className='btn submit' href={value.live} target='_blank' rel="noreferrer">Live</a>
+                <a className='btn border-color text-light' href={value.github} target='_blank' rel="noreferrer">Github</a>
+                <a className='btn border-color text-light' href={value.live} target='_blank' rel="noreferrer">Live</a>
               </div>
               <div>
-                <img src={value.image} alt={value.name} />
+                <img className='w-100' src={`http://localhost:5000/project/${value.image}`} alt={value.name} />
                 <div>{value.description}</div>
               </div>
             </div>

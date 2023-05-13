@@ -15,15 +15,20 @@ const Create = () => {
     })
 
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setInput({...input, [name] : value})
+        const {name, value, type, files} = e.target
+        const inputValue = type === 'file' ? files[0] : value
+        setInput({...input, [name] : inputValue})
     }
 
     //create
     const handleClick = async(e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.post('http://localhost:5000/project/create', input)
+            const {data} = await axios.post('http://localhost:5000/project/create', input, {
+                headers: {
+                    "Content-Type" : "multipart/form-data"
+                }
+            })
             console.log(data);
             toast.success(data.message)
             navigate('/dashbord')
@@ -44,7 +49,7 @@ const Create = () => {
                 <div className='create-section-input'>
                     <form >
                         <input className='contact-class p-2' placeholder='Name' type='text' name='name' value={input.name} onChange={handleChange} />
-                        <input className='contact-class p-2' placeholder='Image' type='text' name='image' value={input.image} onChange={handleChange} />
+                        <input className='contact-class p-2' placeholder='Image' type='file' name='image' accept='images/' onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Description' type='text' name='description' value={input.description} onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Github' type='text' name='github' value={input.github} onChange={handleChange} />
                         <input className='contact-class p-2' placeholder='Live' type='text' name='live' value={input.live} onChange={handleChange} />

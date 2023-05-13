@@ -3,15 +3,16 @@ const projectModel = require('../models/projectModel')
 //create project
 module.exports.createProject = async(req, res) => {
     try {
-        const {name, image, description, github, live} = req.body
+        const {filename} = req.file
+        const {name, description, github, live} = req.body
         //validations
-        if(!name || !image || !description || !github || !live) {
+        if(!name || !description || !github || !live || !filename) {
             return res.json({
                 message: "Fill all the data"
             })
         }
         //create
-        const project = await projectModel({...req.body}).save()
+        const project = await projectModel({name, image: filename, description, github, live}).save()
         res.status(200).json({
             success: true, message: "Project created successfully", project
         })

@@ -12,7 +12,11 @@ const Dashbord = () => {
     //get all data
     const getData = async() => {
         try {
-            const {data} = await axios.get('http://localhost:5000/project/get')
+            const {data} = await axios.get('http://localhost:5000/project/get', {
+                headers: {
+                    "Content-Type" : "application/json"
+                }
+            })
             //console.log(data);
             setData(data.projects)
             setLoading(false)
@@ -49,14 +53,14 @@ const Dashbord = () => {
                 <div className='container mt-5 mb-5'>
                     <div className='dashbord-section'>
                         <div className='dashbord-section-btn'>
-                            <button className='btn submit' onClick={() => {navigate('/create')}}>Add</button>
+                            <button className='btn border-color text-light' onClick={() => {navigate('create')}}>Add project</button>
                         </div>
                         <div className='d-flex flex-wrap mt-5' style={{gap: '3rem'}}>
                             {
                                 data.map((project) => (
                                     <div key={project._id} className='card project-card'>
                                     <div className='project-card-body'>
-                                        <img className='project-image' src={project.image} alt={project.name} />
+                                        <img className='project-image' src={`http://localhost:5000/project/${project.image}`} alt={project.name} />
                                         <div>{project.name}</div>
                                     </div>
                                     <div className='project-card-button'>
