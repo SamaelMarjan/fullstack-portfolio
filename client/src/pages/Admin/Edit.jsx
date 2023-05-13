@@ -24,7 +24,7 @@ const Edit = () => {
     useEffect(() => {
         const editProject = async() => {
             try {
-                const {data} = await axios.get(`http://localhost:5000/project/get/${id}`)
+                const {data} = await axios.get(`https://samael-marjan.onrender.com/project/get/${id}`)
                 console.log(data);
                 setInput(data.project)
             } catch (error) {
@@ -38,7 +38,7 @@ const Edit = () => {
     //update
     const updateProject = async() => {
         try {
-            const {data} = await axios.put(`http://localhost:5000/project/update/${id}`, input, {
+            const {data} = await axios.put(`https://samael-marjan.onrender.com/project/update/${id}`, input, {
                 headers: {
                     "Content-Type" : "multipart/form-data"
                 }

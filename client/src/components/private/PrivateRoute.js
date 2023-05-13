@@ -10,7 +10,7 @@ const PrivateRoute = () => {
 
     useEffect(() => {
         const authCheck = async() => {
-            const {data} = await axios.get('http://localhost:5000/auth/admin', {
+            const {data} = await axios.get('https://samael-marjan.onrender.com/auth/admin', {
                 headers: {
                     Authorization: auth?.token
                 }

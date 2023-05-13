@@ -20,10 +20,11 @@ const Contact = () => {
     const handleClick = async(e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.post('http://localhost:5000/message/sendmessage', input)
+            const {data} = await axios.post('https://samael-marjan.onrender.com/message/sendmessage', input)
             //console.log(data);
             toast.success(data.message)
-            setInput(data.messages)
+            //setInput(data.messages)
+            setInput({name: '', email: '', message:''})
         } catch (error) {
             console.log(error);
             toast.error('Something wrong')

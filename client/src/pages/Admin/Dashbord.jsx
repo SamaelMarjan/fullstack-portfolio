@@ -12,7 +12,7 @@ const Dashbord = () => {
     //get all data
     const getData = async() => {
         try {
-            const {data} = await axios.get('http://localhost:5000/project/get', {
+            const {data} = await axios.get('https://samael-marjan.onrender.com/project/get', {
                 headers: {
                     "Content-Type" : "application/json"
                 }
@@ -33,7 +33,7 @@ const Dashbord = () => {
     //delete
     const deleteProject = async(id) => {
         try {
-            const {data} = await axios.delete(`http://localhost:5000/project/delete/${id}`)
+            const {data} = await axios.delete(`https://samael-marjan.onrender.com/project/delete/${id}`)
             console.log(data);
             toast.success(data.message)
             getData()
@@ -60,7 +60,7 @@ const Dashbord = () => {
                                 data.map((project) => (
                                     <div key={project._id} className='card project-card'>
                                     <div className='project-card-body'>
-                                        <img className='project-image' src={`http://localhost:5000/project/${project.image}`} alt={project.name} />
+                                        <img className='project-image' src={`https://samael-marjan.onrender.com/project/${project.image}`} alt={project.name} />
                                         <div>{project.name}</div>
                                     </div>
                                     <div className='project-card-button'>

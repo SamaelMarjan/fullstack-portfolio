@@ -24,7 +24,7 @@ const Create = () => {
     const handleClick = async(e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.post('http://localhost:5000/project/create', input, {
+            const {data} = await axios.post('https://samael-marjan.onrender.com/project/create', input, {
                 headers: {
                     "Content-Type" : "multipart/form-data"
                 }

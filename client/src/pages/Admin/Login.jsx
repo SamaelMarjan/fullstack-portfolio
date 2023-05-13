@@ -21,7 +21,7 @@ const Login = () => {
   const handleClick = async(e) => {
     e.preventDefault()
     try {
-      const {data} = await axios.post('http://localhost:5000/auth/login', login)
+      const {data} = await axios.post('https://samael-marjan.onrender.com/auth/login', login)
       console.log(data);
       toast.success(data.message)
       setAuth({...auth, user: data.user, token: data.token})

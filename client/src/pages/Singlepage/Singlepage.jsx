@@ -15,7 +15,7 @@ const Singlepage = () => {
   useEffect(() => {
     const singleData = async() => {
       try {
-        const {data} = await axios.get(`http://localhost:5000/project/get/${id}`, {
+        const {data} = await axios.get(`https://samael-marjan.onrender.com/project/get/${id}`, {
           headers: {
             "Content-Type" : "application/json"
           }
@@ -47,7 +47,7 @@ const Singlepage = () => {
                 <a className='btn border-color text-light' href={value.live} target='_blank' rel="noreferrer">Live</a>
               </div>
               <div>
-                <img className='w-100' src={`http://localhost:5000/project/${value.image}`} alt={value.name} />
+                <img className='w-100' src={`https://samael-marjan.onrender.com/project/${value.image}`} alt={value.name} />
                 <div>{value.description}</div>
               </div>
             </div>
